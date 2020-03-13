@@ -47,16 +47,31 @@ class Figure():
     b[x][y] = change_value(self.value,self.team)
   def info(self):
     print(self.x," ",self.y)
+    print("rank = ", self.rank)
+
 class Pawn(Figure):
   rank = 1
-  team = 0
   value = " p "
+class Horse(Figure):
+  rank = 2
+  value = " h "
+class Tower(Figure):
+  rank = 3
+  value = " t "
+class Officer(Figure):
+  rank = 4
+  value = " o "
+class Queen(Figure):
+  rank = 5
+  value = " q "
+class King(Figure):
+  rank = 0
+  value = " k "
   
 
 a = Board()
 b = a.board
 a.print_board()
-p = Pawn(b,x = 1,y = 1,team = 1)
+p = Horse(b,x = 1,y = 1,team = 1)
 a.print_board()
-f = change_value("jopa",1)
-print(f)
+p.info()
