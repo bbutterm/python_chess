@@ -18,9 +18,9 @@ def print_line(list):
 class Board():
   board = []
   height = 0
-  height_curve = ['a','b','c','d','e','f','g','h']
+  height_curve = [' 1 ',' 2 ',' 3 ',' 4 ',' 5 ',' 6 ',' 7 ',' 8 ']
   width = 0
-  width_curve = [' 1 ',' 2 ',' 3 ',' 4 ',' 5 ',' 6 ',' 7 ',' 8 ']
+  width_curve = [' a ',' b ',' c ',' d ',' e ',' f ',' g ',' h ']
 
   def __init__(self,size=10):
     for i in range(1,9):
@@ -36,17 +36,23 @@ class Board():
     for i in self.board:
       print_line(i)
     print_line(a.width_curve)
+  def move_figure(self,start,finish):
+    pass??
 class Figure():
   x = 0
   y = 0
   rank = 0
   team = 0
+  postion = 0
   value = " k "
   def __init__(self,b = Board.board,x = 0,y = 0,team = 0):
     self.team = team
     self.x = x
     self.y = y
+    self.postion = converter(self.x,self.y)
     b[x][y] = change_value(self.value,self.team)
+  def move():
+    pass
   def info(self):
     print(self.x," ",self.y)
     print("rank = ", self.rank)
@@ -113,8 +119,27 @@ class Init():
     self.king.append(King(x=0,y=4))
     self.queen.append(Queen(x=7,y=4,team=1))
     self.king.append(King(x=7,y=3,team=1))
+def get_key(d, value):
+    for k, v in d.items():
+        if v == value:
+            return k
+def converter(x,y):
+  x+=1
+  if (x < 0 or x > 7) or (y < 0 or y > 7):
+    return 0
+  d = {0:'a',1:'b',2:'c',3:'d',4:'e',5:'f',6:'g',7:'h'}
+  a = d[y] + str(x)
+  return a
+def reconverter(s):
+  d = {0:'a',1:'b',2:'c',3:'d',4:'e',5:'f',6:'g',7:'h'}
+  s = list(s)
+  x = get_key(d,s[0])
+  y = (int(s[1]))
+  return x,y
 a = Board()
 b = a.board
 a.print_board()
 p = Init()
 a.print_board()
+print(p.pawns[2].x,p.pawns[2].y)
+print(p.pawns[15].postion)
