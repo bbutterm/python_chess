@@ -82,6 +82,8 @@ class Init():
     self.pawns_init()
     self.towers_init()
     self.horses_init()
+    self.officers_init()
+    self.queen_and_king()
   def pawns_init(self):
     i = 0
     while (i < 8):
@@ -101,7 +103,16 @@ class Init():
     self.horses.append(Horse(x=0, y=6, team=0))
     self.horses.append(Horse(x=7, y=1, team=1))
     self.horses.append(Horse(x=7, y=6, team=1))
-
+  def officers_init(self):
+    self.officers.append(Officer(x=0,y=2))
+    self.officers.append(Officer(x=0,y=5))
+    self.officers.append(Officer(x=7,y=2,team = 1))
+    self.officers.append(Officer(x=7,y=5,team = 1))
+  def queen_and_king(self):
+    self.queen.append(Queen(x=0,y=3))
+    self.king.append(King(x=0,y=4))
+    self.queen.append(Queen(x=7,y=4,team=1))
+    self.king.append(King(x=7,y=3,team=1))
 a = Board()
 b = a.board
 a.print_board()
